@@ -24,6 +24,7 @@ INSTALLED_APPS = (
 
     # 3rd-party apps
     'south',
+    'compressor',
     'rest_framework',
     'crispy_forms',
     'djcelery',
@@ -32,6 +33,7 @@ INSTALLED_APPS = (
 
     # Local apps
     'api',
+    'core',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,7 +106,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Django-Crispy-Forms settings

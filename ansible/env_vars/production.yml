@@ -90,6 +90,9 @@ rabbitmq_application_vhost: "{{ application_name }}"
 rabbitmq_application_user: "{{ application_name }}"
 rabbitmq_application_password: test
 
+# Celery settings.
+celery_num_workers: 2
+celery_application_settings_file: settings.production
 
 # Application settings.
 django_settings_file: settings.production

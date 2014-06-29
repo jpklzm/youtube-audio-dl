@@ -19,6 +19,13 @@
   when: run_django_south_migration
   tags: django
 
+- name: Create the media directory
+  file: path="{{ virtualenv_path }}/media"
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+        mode=0774
+        state=directory
+
 - name: Run Django collectstatic
   shell: . {{ virtualenv_path }}/bin/activate
          && . {{ virtualenv_path }}/bin/postactivate

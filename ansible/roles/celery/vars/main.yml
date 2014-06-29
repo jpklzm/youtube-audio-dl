@@ -6,6 +6,9 @@ setup_camera: yes
 application_path: "{{ server_root_dir }}/youtube-audio-dl/youtubeadl"
 virtualenv_path: "{{ server_root_dir }}/youtubeadl"
 
+celery_user: "{{ application_name }}"
+celery_group: webapps
+
 celery_application_name: youtubeadlcelery
 celerycam_application_name: youtubeadlcelerycam
 celery_scripts_dir: "{{ server_root_dir }}/scripts/celery"
