@@ -13,8 +13,8 @@
     - env_vars/production.yml
 
   roles:
-    #- base
-    #- db
-    #- web
+    - base
+    - db
+    - web
     - rabbitmq
     - celery

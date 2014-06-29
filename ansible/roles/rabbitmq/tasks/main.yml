@@ -5,18 +5,14 @@
                   update_cache={{ update_apt_cache }}
                   state=present
 
-#- name: Add the RabbitMQ public GPG key to the apt repo
-#  apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
-#           state=present
-
 - name: Install RabbitMQ server
   apt: name={{ item }} state=installed
   with_items:
     - rabbitmq-server
 
-#- name: Enable the RabbitMQ Management Console
-#  rabbitmq_plugin: names=rabbitmq_management state=enabled
-#  notify: restart rabbitmq-server
+- name: Enable the RabbitMQ Management Console
+  rabbitmq_plugin: names=rabbitmq_management state=enabled
+  notify: restart rabbitmq-server
 
 - include: setup_vhosts.yml
 
