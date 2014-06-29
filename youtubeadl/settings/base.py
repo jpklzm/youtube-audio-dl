@@ -116,6 +116,9 @@ STATICFILES_FINDERS = (
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Celery settings
+import djcelery
+djcelery.setup_loader()
+
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 
 # Youtube Audio Downloader Settings
