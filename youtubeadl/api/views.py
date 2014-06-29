@@ -69,6 +69,7 @@ def download_file(request, video_id, filename):
 
     if youtube and file_exists:
         ActivityLog.objects.create(
+            action='DOWNLOAD',
             client_ip=get_client_ip(request),
             video_id=video_id
         )
