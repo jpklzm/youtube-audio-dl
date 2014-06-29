@@ -96,7 +96,7 @@ STATIC_ROOT = '/webapps/youtubeadl/static/'
 
 STATIC_URL = '/static/'
 
-media_url = '/media/'
+MEDIA_URL = '/media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
