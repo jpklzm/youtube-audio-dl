@@ -73,7 +73,7 @@
                     success: function (data) {
                         var response = jQuery.parseJSON(data);
                         if (response['success']) {
-                            if (response['filename']) {
+                            if (response['video_id']) {
                                 $('#result').addClass("alert-success");
                                 $('#result').html("<strong><u><a href=" + response['download_link'] + ">"
                                     + "Download &quot;" + response['filename'] + "&quot;</a></u></strong>");

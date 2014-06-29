@@ -36,19 +36,23 @@ def extract_audio(request):
             result = AsyncResult(task.id)
             result.wait()
 
-            video_id = result.result['video_id']
-            filename = result.result['filename']
-            download_link = reverse(
-                'download_file',
-                kwargs={'video_id': video_id, 'filename': filename})
-            data = {
-                'success': True,
-                'id': task.id,
-                'filename': filename,
-                'download_link': download_link
-            }
+            if result.successful():
+                data = {'success': True, 'id': task.id}
 
-            return HttpResponse(json.dumps(data))
+                if result.result:
+                    video_id = result.result['video_id']
+                    filename = result.result['filename']
+                    download_link = reverse(
+                        'download_file',
+                        kwargs={'video_id': video_id, 'filename': filename})
+
+                    data['video_id'] = video_id
+                    data['filename'] = filename
+                    data['download_link'] = download_link
+
+                return HttpResponse(json.dumps(data))
+            else:
+                return HttpResponse(json.dumps({'success': False}))
         else:
             message = 'Please enter a URL.'
             return HttpResponse(json.dumps({'form_valid': False,
