@@ -1,15 +1,23 @@
 ---
 
+- name: Install ffmpeg
+  apt: name=ffmpeg update_cache={{ update_apt_cache }} force=yes state=installed
+  tags: packages
+
 - include: create_users_and_groups.yml
 
 - include: setup_virtualenv.yml
 
 - include: setup_git_repo.yml
+  tags: deploy
 
 - include: setup_supervisor.yml
 
 - include: setup_django_app.yml
+  tags: deploy
 
 - include: set_file_permissions.yml
+  tags: deploy
 
 - include: setup_nginx.yml
+  tags: nginx

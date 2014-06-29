@@ -96,6 +96,8 @@ STATIC_ROOT = '/webapps/youtubeadl/static/'
 
 STATIC_URL = '/static/'
 
+media_url = '/media/'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
