@@ -23,7 +23,7 @@
   file: path="{{ virtualenv_path }}/media"
         owner={{ gunicorn_user }}
         group={{ gunicorn_group }}
-        mode=0774
+        mode=0775
         state=directory
 
 - name: Run Django collectstatic
