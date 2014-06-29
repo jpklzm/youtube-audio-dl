@@ -17,11 +17,8 @@
     - python-dev
     - python-pip
     - python-pycurl
+    - python-software-properties
     - supervisor
-  tags: packages
-
-- name: Install newrelic
-  pip: name=newrelic
   tags: packages
 
 - name: Install virtualenv

@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'compressor',
     'rest_framework',
     'crispy_forms',
+    'gunicorn',
     'djcelery',
     'django_extensions',
     'kombu.transport.django',

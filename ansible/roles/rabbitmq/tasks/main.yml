@@ -1,13 +1,13 @@
 ---
 
-- name: Add the RabbitMQ public GPG key to the apt repo
-  apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
-           state=present
-
 - name: Add RabbitMQ to the trusted sources list
   apt_repository: repo='deb http://www.rabbitmq.com/debian/ testing main'
                   update_cache={{ update_apt_cache }}
                   state=present
+
+#- name: Add the RabbitMQ public GPG key to the apt repo
+#  apt_key: url=http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+#           state=present
 
 - name: Install RabbitMQ server
   apt: name={{ item }} state=installed

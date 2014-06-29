@@ -3,7 +3,7 @@
 server_root_dir: /webapps
 setup_camera: yes
 
-application_path: "{{ server_root_dir }}/youtube-audio-dl/youtubeadl"
+application_path: "{{ server_root_dir }}/youtubeadl"
 virtualenv_path: "{{ server_root_dir }}/youtubeadl"
 
 celery_user: "{{ application_name }}"

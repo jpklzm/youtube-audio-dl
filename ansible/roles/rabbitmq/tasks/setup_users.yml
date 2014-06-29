@@ -8,7 +8,7 @@
                  state=present
 
 - name: Create application user
-  rabbitmq_user: user={{ rabbitq_application_user }}
+  rabbitmq_user: user={{ rabbitmq_application_user }}
                  password={{ rabbitmq_application_password }}
                  vhost={{ rabbitmq_application_vhost }}
                  configure_priv=.*
