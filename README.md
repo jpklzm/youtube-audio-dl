@@ -17,4 +17,3 @@ Technology Stack
 - RabbitMQ
 - Supervisor
 - Virtualenv
-- Ubuntu 12.04 x64

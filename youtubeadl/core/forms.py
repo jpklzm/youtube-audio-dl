@@ -34,7 +34,7 @@ class DownloadForm(forms.Form):
                 FormActions(
                     HTML("""<p class="text-center">"""),
                     Submit('submit',
-                           'Start Audio Download',
+                           'Start Conversion',
                            css_class='btn-lg'),
                 ),
             ),

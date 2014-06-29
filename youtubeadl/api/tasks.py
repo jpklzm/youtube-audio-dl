@@ -29,6 +29,7 @@ def extract_audio(url, client_ip=None):
     result = None
     if info and info['duration'] <= settings.MAX_DURATION_MINUTES:
         video_id = info['id']
+        title = info['title']
 
         ActivityLog.objects.create(
             client_ip=client_ip,
@@ -40,11 +41,11 @@ def extract_audio(url, client_ip=None):
 
         youtube, created = YouTube.objects.get_or_create(video_id=video_id)
         youtube.url = url
-        youtube.title = info['title']
+        youtube.title = title
         youtube.duration = int(info['duration'])
         youtube.save()
 
-        result = {'video_id': video_id}
+        result = {'video_id': video_id, 'title': title}
 
         # Simply return the filename if it already exists, otherwise, start
         # the extraction.
