@@ -91,7 +91,7 @@ def download_file(request, video_id, filename):
             # Have Nginx serve the file in production.
             response = HttpResponse(mimetype='application/force-download')
             response['Content-Length'] = os.path.getsize(filepath)
-            response['X-Accel-Redirect'] = '%s%s' % (settings.MEDIA_ROOT,
+            response['X-Accel-Redirect'] = '%s%s' % (settings.MEDIA_URL,
                                                      smart_str(filename))
 
             return response
