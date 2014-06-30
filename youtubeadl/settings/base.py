@@ -122,7 +122,7 @@ djcelery.setup_loader()
 CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
 
 # Youtube Audio Downloader Settings
-MAX_DURATION_MINUTES = 7200
+MAX_DURATION_MINUTES = 10800
 
 LOGGING = {
     'version': 1,
