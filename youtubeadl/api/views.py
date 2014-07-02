@@ -30,7 +30,8 @@ def extract_audio(request):
             # Pull the video id from the URL and rebuild it.
             # TODO: Refactor this entire thing later.
             if url:
-                url = 'http://www.youtube.com/watch?v=' % url.POST.get('v', None)
+                url = 'http://www.youtube.com/watch?v=' % \
+                      request.POST.get('v', None)
 
             task = tasks.extract_audio.delay(url, client_ip)
             result = AsyncResult(task.id)
