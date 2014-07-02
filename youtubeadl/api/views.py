@@ -27,10 +27,10 @@ def extract_audio(request):
 
             url = form.cleaned_data['url']
 
-            # Truncate the URL to remove the ampersand and anything after it.
-            # This will prevent passing a playlist URL.
+            # Pull the video id from the URL and rebuild it.
+            # TODO: Refactor this entire thing later.
             if url:
-                url = url.split('&')[0]
+                url = 'http://www.youtube.com/watch?v=' % url.POST.get('v', None)
 
             task = tasks.extract_audio.delay(url, client_ip)
             result = AsyncResult(task.id)
