@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+import urlparse
 
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
@@ -30,8 +31,9 @@ def extract_audio(request):
             # Pull the video id from the URL and rebuild it.
             # TODO: Refactor this entire thing later.
             if url:
-                url = 'http://www.youtube.com/watch?v=' % \
-                      request.POST.get('v', None)
+                qs = urlparse.parse_qs(urlparse.urlparse(url).query)
+                if qs['v']:
+                    url = 'http://www.youtube.com/watch?v=%s' % qs['v'][0]
 
             task = tasks.extract_audio.delay(url, client_ip)
             result = AsyncResult(task.id)
