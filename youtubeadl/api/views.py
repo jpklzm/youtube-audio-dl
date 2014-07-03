@@ -1,13 +1,13 @@
 import datetime
 import json
 import os
-import urlparse
+import urllib
+from urlparse import urlparse, parse_qs, urlsplit, urlunsplit
 
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseForbidden, Http404, \
-    HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
 from django.utils.encoding import smart_str
 
 from celery.result import AsyncResult
@@ -28,12 +28,19 @@ def extract_audio(request):
 
             url = form.cleaned_data['url']
 
-            # Pull the video id from the URL and rebuild it.
+            # Remove the list parameter from the URL as we currently don't
+            # support conversion of an entire playlist.
             # TODO: Refactor this entire thing later.
             if url:
-                qs = urlparse.parse_qs(urlparse.urlparse(url).query)
-                if qs['v']:
-                    url = 'http://www.youtube.com/watch?v=%s' % qs['v'][0]
+                qs = parse_qs(urlparse(url).query)
+                if hasattr(qs, 'list'):
+                    del(qs['list'])
+                    parts = urlsplit(url)
+                    url = urlunsplit([parts.scheme,
+                                      parts.netloc,
+                                      parts.path,
+                                      urllib.urlencode(qs, True),
+                                      parts.fragment])
 
             task = tasks.extract_audio.delay(url, client_ip)
             result = AsyncResult(task.id)
