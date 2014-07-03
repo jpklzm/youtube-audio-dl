@@ -33,7 +33,7 @@ def extract_audio(request):
             # TODO: Refactor this entire thing later.
             if url:
                 qs = parse_qs(urlparse(url).query)
-                
+
                 if qs.get('list', None):
                     del(qs['list'])
                     parts = urlsplit(url)
