@@ -15,20 +15,18 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
 api = tweepy.API(auth)
 
-# search_terms = [
-#     'youtube mp3',
-#     'youtube audio',
-#     'youtube music download',
-# ]
-#
-# for search_term in search_terms:
-#     print 'Searching for %s...' % search_term
-#     search_results = api.search(q=search_term)
-#     for result in search_results:
-#         if not result.user.following:
-#             print 'Following %s...' % result.user.screen_name
-#             result.user.follow()
-#             time.sleep(10)
+search_terms = [
+    'convert youtube to mp3?',
+]
+
+for search_term in search_terms:
+    print 'Searching for %s...' % search_term
+    search_results = api.search(q=search_term)
+    for result in search_results:
+        if not result.user.following:
+            print 'Following %s...' % result.user.screen_name
+            result.user.follow()
+            time.sleep(10)
 
 
 # Unfollow users not following me (yes, not nice, but gotta cleanup sometimes).
