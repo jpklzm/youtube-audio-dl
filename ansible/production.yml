@@ -7,6 +7,7 @@
   remote_user: root
   vars:
     - setup_git_repo: yes
+    - setup_cron_jobs: yes
     - update_apt_cache: yes
   vars_files:
     - env_vars/base.yml

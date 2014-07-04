@@ -1,0 +1,10 @@
+---
+
+- name: Ensure that an hourly Twitter auto-follow job exists
+  cron: name="hourly twitter auto-follow"
+        special_time=hourly
+        user={{ gunicorn_user }}
+        job="bash {{ project_path }}/scripts/run_twitter_auto_follow.sh"
+        state=present
+  when: setup_cron_jobs
+  tags: cron
