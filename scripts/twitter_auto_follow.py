@@ -3,7 +3,6 @@ import time
 
 import tweepy
 
-
 API_KEY = os.environ['TWITTER_API_KEY']
 API_SECRET = os.environ['TWITTER_API_SECRET']
 
@@ -16,17 +15,20 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
 search_terms = [
-    'convert youtube to mp3?',
+    'listening to youtube',
 ]
 
+max_follows = 5
+counter = 0
 for search_term in search_terms:
     print 'Searching for %s...' % search_term
     search_results = api.search(q=search_term)
     for result in search_results:
-        if not result.user.following:
+        if not result.user.following and counter < max_follows:
             print 'Following %s...' % result.user.screen_name
             result.user.follow()
-            time.sleep(10)
+            time.sleep(30)
+            counter += 1
 
 
 # Unfollow users not following me (yes, not nice, but gotta cleanup sometimes).
