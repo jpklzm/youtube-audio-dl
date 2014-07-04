@@ -75,7 +75,7 @@
                         if (response['success']) {
                             if (response['video_id']) {
                                 $('#result').addClass("alert-success");
-                                $('#result').html("<strong><u><a href=" + response['download_link'] + " target=&quot;_blank&quot;>"
+                                $('#result').html("<strong><u><a href=" + response['download_link'] + " target=_self>"
                                     + "Download &quot;" + response['filename'] + "&quot;</a></u></strong>");
                             } else {
                                 $('#result').addClass("alert-danger");
