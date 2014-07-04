@@ -17,9 +17,8 @@ api = tweepy.API(auth)
 
 search_terms = [
     'youtube mp3',
-    # '#t1d',
-    # '#insulin',
-    # '#glucose',
+    'youtube audio',
+    'youtube music download',
 ]
 
 for search_term in search_terms:
