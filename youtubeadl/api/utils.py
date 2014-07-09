@@ -1,15 +1,33 @@
 import re
+from unicodedata import normalize
 
 import youtube_dl
+
+
+_punct_re = re.compile(r'[\t !"#$%&\'()*\-/<=>?@\[\\\]^_`{|},.:]+')
+
+
+def slugify(text, delim=u'-'):
+    """
+    Slugifies a string.
+
+    Source: http://stackoverflow.com/questions/9042515/normalizing-unicode-\
+        text-to-filenames-etc-in-python
+    """
+    result = []
+    for word in _punct_re.split(text):
+        word = normalize('NFKD', word).encode('ascii', 'ignore')
+        if word:
+            result.append(word)
+    return unicode(delim.join(result))
 
 
 def create_filename(value):
     """
     Delete non-ASCII characters from the value and replace spaces with
-    underscores. Also strip slashes.
+    underscores. Also strip slashes and percent signs.
     """
-    return '%s.mp3' % re.sub(r'[^\x00-\x7F]+', '', value)\
-        .replace(' ', '_').replace('/', '')
+    return '%s.mp3' % slugify(value, u'_')
 
 
 def get_video_info(url):
