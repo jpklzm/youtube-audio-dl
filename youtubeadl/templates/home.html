@@ -19,7 +19,7 @@
         <!-- ShareThis button Javascript -->
         <script type="text/javascript">var switchTo5x=true;</script>
         <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "d6597cb3-7fe9-48bd-a27c-10864e84942c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+        <script type="text/javascript">stLight.options({publisher: "d6597cb3-7fe9-48bd-a27c-10864e84942c", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
     </head>
 
     <body>
@@ -36,7 +36,7 @@
                 {% load crispy_forms_tags %}
                 {% crispy form %}
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-10 col-lg-offset-1">
                 <span class='st_twitter_large' displayText='Tweet'></span>
                 <span class='st_facebook_large' displayText='Facebook'></span>
                 <span class='st_linkedin_large' displayText='LinkedIn'></span>
