@@ -18,7 +18,7 @@ search_terms = [
     'listening to youtube',
 ]
 
-max_follows = 5
+max_follows = 3
 counter = 0
 for search_term in search_terms:
     print 'Searching for %s...' % search_term
@@ -32,7 +32,7 @@ for search_term in search_terms:
 
 
 # Unfollow users not following me (yes, not nice, but gotta cleanup sometimes).
-# for f in tweepy.Cursor(api.friends).items(1200):
+# for f in tweepy.Cursor(api.friends).items(1000):
 #     source, target = api.show_friendship(source_screen_name=f.screen_name,
 #                                          target_screen_name='youtubeadl')
 #     print source.screen_name, target.screen_name, target.followed_by
@@ -40,4 +40,4 @@ for search_term in search_terms:
 #     if not target.followed_by:
 #         api.destroy_friendship(screen_name=source.screen_name)
 #
-#     time.sleep(20)
+#     time.sleep(2)
