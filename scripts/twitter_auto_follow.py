@@ -14,30 +14,30 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
 api = tweepy.API(auth)
 
-search_terms = [
-    'listening to youtube',
-]
-
-max_follows = 3
-counter = 0
-for search_term in search_terms:
-    print 'Searching for %s...' % search_term
-    search_results = api.search(q=search_term)
-    for result in search_results:
-        if not result.user.following and counter < max_follows:
-            print 'Following %s...' % result.user.screen_name
-            result.user.follow()
-            time.sleep(30)
-            counter += 1
+# search_terms = [
+#     'listening to youtube',
+# ]
+#
+# max_follows = 3
+# counter = 0
+# for search_term in search_terms:
+#     print 'Searching for %s...' % search_term
+#     search_results = api.search(q=search_term)
+#     for result in search_results:
+#         if not result.user.following and counter < max_follows:
+#             print 'Following %s...' % result.user.screen_name
+#             result.user.follow()
+#             time.sleep(30)
+#             counter += 1
 
 
 # Unfollow users not following me (yes, not nice, but gotta cleanup sometimes).
-# for f in tweepy.Cursor(api.friends).items(1000):
-#     source, target = api.show_friendship(source_screen_name=f.screen_name,
-#                                          target_screen_name='youtubeadl')
-#     print source.screen_name, target.screen_name, target.followed_by
-#
-#     if not target.followed_by:
-#         api.destroy_friendship(screen_name=source.screen_name)
-#
-#     time.sleep(2)
+for f in tweepy.Cursor(api.friends).items(1000):
+    source, target = api.show_friendship(source_screen_name=f.screen_name,
+                                         target_screen_name='youtubeadl')
+    print source.screen_name, target.screen_name, target.followed_by
+
+    if not target.followed_by:
+        api.destroy_friendship(screen_name=source.screen_name)
+
+    time.sleep(2)

@@ -8,3 +8,12 @@
         state=present
   when: setup_cron_jobs
   tags: cron
+
+- name: Ensure that a daily youtube-dl package update job exists
+  cron: name="daily youtube-dl update"
+        special_time=daily
+        user=root
+        job="source /webapps/youtubeadl/bin/activate && pip install -U youtube-dl && supervisorctl restart youtubeadl"
+        state=present
+  when: setup_cron_jobs
+  tags: cron
