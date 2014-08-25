@@ -16,10 +16,8 @@
             body {margin-top: 90px;}
         </style>
 
-        <!-- ShareThis button Javascript -->
-        <script type="text/javascript">var switchTo5x=true;</script>
-        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: "d6597cb3-7fe9-48bd-a27c-10864e84942c", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+     <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ addthis_publisher_id }}"></script>
     </head>
 
     <body>
@@ -38,16 +36,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-12 panel-body">
-                <p class="text-center">
-                    <span class='st_twitter_large' displayText='Tweet'></span>
-                    <span class='st_facebook_large' displayText='Facebook'></span>
-                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                    <span class='st_pinterest_large' displayText='Pinterest'></span>
-                    <span class='st_email_large' displayText='Email'></span>
-                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-                </p>
-            </div>
+            <div class="addthis_sharing_toolbox text-center"></div>
           </div>
         </div><!-- /.container -->
 
@@ -121,7 +110,7 @@
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-52335746-1', 'auto');
+          ga('create', '{{ google_analytics_tracking_id }}', 'auto');
           ga('send', 'pageview');
         </script>
     </body>
