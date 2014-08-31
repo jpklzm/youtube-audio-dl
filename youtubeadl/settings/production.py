@@ -7,7 +7,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-DATABASES['default']['password'] = os.environ['DATABASE_PASSWORD']
+DATABASES['default']['PASSWORD'] = os.environ['DATABASE_PASSWORD']
 
 ALLOWED_HOSTS = ['.youtubeadl.com']
 
