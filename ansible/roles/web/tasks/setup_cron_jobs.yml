@@ -13,7 +13,7 @@
   cron: name="daily youtube-dl update"
         special_time=daily
         user=root
-        job="source /webapps/youtubeadl/bin/activate && pip install -U youtube-dl && supervisorctl restart all"
+        job=". /webapps/youtubeadl/bin/activate && pip install -U youtube-dl && supervisorctl restart all"
         state=present
   when: setup_cron_jobs
   tags: cron
