@@ -7,6 +7,8 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
+DATABASES['default']['password'] = os.environ['DATABASE_PASSWORD']
+
 ALLOWED_HOSTS = ['.youtubeadl.com']
 
 MEDIA_ROOT = '/webapps/youtubeadl/media/'
