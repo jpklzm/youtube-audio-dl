@@ -7,14 +7,9 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-DATABASES['default']['PASSWORD'] = os.environ['DATABASE_PASSWORD']
-
 ALLOWED_HOSTS = ['.youtubeadl.com']
 
 MEDIA_ROOT = '/webapps/youtubeadl/media/'
-
-# Celery settings
-BROKER_URL = os.environ['BROKER_URL']
 
 # 3rd-party apps tracking IDs.
 GOOGLE_ANALYTICS_TRACKING_ID = 'UA-52335746-1'

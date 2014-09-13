@@ -66,11 +66,11 @@ def start_extraction(url, output_file, youtube_obj):
     # We're creating a temporary file in case multiple workers are in the
     # process of extracting the same video.
     temp_filepath = '%s%s_%s' % (settings.MEDIA_ROOT, uuid.uuid4(), output_file)
-
     output_filepath = '%s%s' % (settings.MEDIA_ROOT, output_file)
 
     result = subprocess.check_call([
-        'youtube-dl',
+        'python',
+        '-m', 'youtube_dl',
         '--no-playlist',
         '--extract-audio',
         '--audio-format', 'mp3',

@@ -13,7 +13,6 @@ import os
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,8 +58,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'youtubeadl',
         'USER': 'youtubeadl',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'password'),
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
         'PORT': '',
     }
 }
@@ -177,3 +176,6 @@ LOGGING = {
         }
     }
 }
+
+# Celery settings
+BROKER_URL = os.environ.get('BROKER_URL', 'amqp://guest:guest@localhost/')
