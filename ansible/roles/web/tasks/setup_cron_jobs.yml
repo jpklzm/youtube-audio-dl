@@ -19,7 +19,7 @@
   tags: cron
 
 - name: Ensure that a weekly file cleanup job exists
-  cron: name="daily youtube-dl update"
+  cron: name="weekly file cleanup"
         special_time=weekly
         user=root
         job="cd /webapps/youtubeadl/media && rm -rf *.mp3"
